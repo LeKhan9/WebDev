@@ -1,6 +1,6 @@
 # WebDev
 
-Various projects utilizing JavaScript, HTML5, and CSS for Web Technologies/Mobile Computing class 
+Various projects utilizing JavaScript, PHP, mySQL, HTML5, and CSS for Web Technologies/Mobile Computing class 
 
 Projects include:
 

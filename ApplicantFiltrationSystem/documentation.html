@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<center><head>
+	<title>Documentation</title>
+    <link rel="stylesheet" href="applicant.css"> 
+    
+        <div6><a href="index.php">Main Page</a></div6>
+
+</head>    
+    
+<body>
+    
+    <!--Creates main title block of webpage-->
+
+    <div>
+            <form >
+            <h1>Documentation Page</h1>
+                <h2>
+                 The purpose of this website is summarized below.</br>
+                 A table view of the technologies used can also be found below.</br>
+                </h2>
+            </form>
+    </div>   
+    
+ <div><form >
+     
+<!--Simple text documentation of various aspects of FINAL PROJECT-->
+
+     <h6>
+    <b>o Web Site and Target Audience o </b>
+    </h6>
+     
+     <h2>Just as stated on the main page, the goal of this website is to provide a system that ranks and filters applicants based on
+     how a company wants to filter. Users have been inputted already to provide a basis of rankings. The unique part of the filtration 
+     system is that companies can provide different weights to bias filtration based on which categories are deemed more important. 
+     Usually, companies do this inherently without any numerical basis - it is more heuristical in nature. By quanitfying this we allow
+     the company to focus on further rounds for interviews versus the preliminary rounds. The target audience is the sponsor companies who
+     will have this website/platform as a link on their applications. The other audience is of course the applicants. Feedback will be 
+     faster based on company cutoffs so applicants do not need to wait as long to hear back. Seemingly biased, but this is inherent in most job application processes based on company needs and values at the time.</h2>
+     
+     <h6>
+    <b> o Design Considerations and Aesthetics o  </b>
+    </h6>
+     
+     <h2> At first I considered having a logo because I wanted the site to be memorable, but then it turned out that the logo got hidden in all
+     of the forms and procedures. Instead I thought of having a company "symbol" - here its the cloudy sky. This is memorable especially with the company name as it is in the background of every page. I wanted this to have a spacey feeling where concentration is mostly on the forms. I thought that having most of the information centered in the middle would allow for more focus and a bigger view of the sky in the background. I thought about how all websites with ads have them placed on the sides. We have been conditioned to ignore ads in a fast manner, and we end up focusing on the middle of the page. So this can go two ways: 1) allows a view of the sky - company symbol and 2) if sold to companies can allow easy space for advertisements to go. </h2>
+     
+     <h6>
+    <b> o Client-Side User Interactivity o  </b>
+    </h6>
+     
+     <h2> The main user event is the taking of the test. This is given weight and focus due to several forms on the page, but more importantly
+     creates a fast-paced environment with a timer. The user inherently wants to get a low time, so this provides a basis for interaction.              Furthermore, on the main student registration page there is a table for job positions to choose from that has been generated with a script - this then populates the job in the forms that the user wants to apply to. Lastly, in a similar manner a script generates a tips menu that a user can push buttons with to go through several tips - forwards and backwards.</h2>
+     
+     <h6>
+    <b> o Information Exchange with the Server o  </b>
+    </h6>
+     
+     <h2> The main server side processing is when we are transferring information from one page to another. This is mainly the information from
+     input forms such as username and email. Populating forms dynamically happens through echos of PHP when transferring data from one page to another. Session Storage was considered, but consolidating variables into one array seemed to be overkill when we could just extract it from the URL. Each ranking filtering does indeed use server side processing to get information from the mySQL tables/lists. On the main page we also validate the input for the company log in by comparing the password and username with what we have in the database. </h2>
+     
+     <h6>
+    <b> o Operations Performed on the Server o  </b>
+    </h6>
+     
+     <h2> The biggest operations performed are those within the ranking and listing ranks inside of the table in the analytics2 file. Each weight given - and obtained through GET - is multiplied by the values in the mySQL database already. This then obtains an overall weighted score value. Values are also listed in ascending in descending order based on user categories selected for ranking. Similarly, depending on which job role is chosen, and which company is logged in the processing works in that manner. </h2>
+     
+</form></div>
+
+<!--Creates main table of technologies used and where on website-->
+
+</br> <b>SUMMARY OF MAIN TECHNOLOGIES USED</b>
+<table >
+  <tr>
+    <td> </td>
+    <td>HTML5</td>		
+    <td>XMLHttpRequest</td>
+    <td>JavaScript</td>  
+    <td>PHP</td>
+    <td>mySQL</td>
+    <td>CSS3 </br> (transforms) </td>
+
+  </tr>
+  <tr>
+    <td>Main Page</td>
+    <td>X
+       </br>~image</td>		
+    <td></td>
+    <td></td>		
+    <td>X</br>~forms</td>
+    <td>X</br>~database input/</br>validate</td>
+    <td>X</br>~image/word flip,</br> button enlarge</td>
+  </tr>
+  <tr>
+    <td>Company Page</td>		
+    <td>X
+       </br>~forms</td>		
+    <td></td>
+    <td></td>		
+    <td>X</td>
+    <td></td>   
+    <td></td>
+
+  </tr>
+   <tr>
+    <td>Listed Ranking Page</td>		
+    <td>X
+       </br>~forms</td>		
+    <td></td>
+    <td></td>		
+    <td>X</td>
+    <td>X</br>~extraction</td>  
+    <td></td>
+
+  </tr>  
+  <tr>
+    <td>Student Page - Main</td>		
+    <td>X
+       </br>~forms
+        </br>~canvas
+        </br>~video</td>		
+    <td>X</br>~job table</td>
+    <td>X</br>~job table</td>		
+    <td></td>
+    <td></td>    
+      <td></td>
+
+  </tr>    
+     <tr>
+    <td>Student Page - Technical Test</td>		
+    <td>X
+        </br>~audio player
+       </br>~forms
+        </br>~canvas
+        </br>~image</td>		
+    <td></td>	
+    <td>X</br>~time keeping/</br>taking test</td>
+    <td>X</td>
+    <td></td>
+    <td>X</br>~drop down </br>menu rotate</td>
+
+  </tr> 
+<tr>
+    <td>Student Page - Applicant Score</td>		
+    <td>X
+       </br>~forms</td>		
+    <td></td>
+    <td></td>		
+    <td>X</td>
+    <td>X</td>
+        <td></td>
+
+  </tr> 
+<tr>
+    <td>Student Page - Debrief</td>		
+    <td>X</td>		
+    <td>X</td>
+    <td>X</td>		
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr> 
+<tr>
+<td>Dynamic Content - Helpful Tips</br> and Position Choosing</td>
+    <td></td>		
+    <td>X</td>
+    <td>X</td>		
+    <td>X</td>
+    <td></td>
+    <td></td>
+
+  </tr>    
+</table>
+   
+
+</body>
+    
+    
+</html></center>

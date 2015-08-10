@@ -1,0 +1,307 @@
+/* definitions for main divs used throughout, and how they react to cursors through hover field - also has transitions built in here*/
+div 
+{
+    margin: auto; 
+    width:50%; 
+    font: 16px verdana, sans-serif;
+    border-radius: 6px;
+}
+
+div2
+{
+    border:darkred solid 2px; 
+    padding:20px;
+    margin:10px; 
+    background-color: white;
+    border-radius: 6px;
+}
+
+div3 {
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+div3:hover
+{
+    width: 300px;
+    height: 300px;
+    transform: rotate(180deg);
+}
+
+div4 {
+    width: 100px;
+    height: 100px;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+div4:hover
+{
+    width: 300px;
+    height: 300px;
+    transform: scale(1.5,1.5);
+}
+
+div5 {
+    width: 100px;
+    height: 100px;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+div5:hover
+{
+    width: 300px;
+    height: 300px;
+    transform: scale(1.2,1.2);
+}
+
+div6 
+{
+    float: right;
+    font:  15px verdana, sans-serif; 
+}
+
+/* borders around images*/
+img
+{
+    border: darkred solid 3px;
+}
+
+/* puts light blue theme in background*/
+body
+{
+    background-image:url(blue.jpg);
+}
+
+/* Different font definitions used throughout - various colors and sizes*/
+h1  
+{
+    font:  22px verdana, sans-serif; 
+    color:darkred; 
+    align: center;
+}
+
+h11 
+{
+    font:  22px verdana, sans-serif; 
+    color:blue; 
+    align: center;
+}
+
+h22
+{
+    font:  20px verdana, sans-serif; 
+    color:green; 
+    align: center;
+}
+
+h2
+{
+    color: blue;
+    font:  15px verdana, sans-serif; 
+    align: center;
+}
+
+h23
+{
+    color: darkcyan;
+    font:  15px verdana, sans-serif; 
+    align: center;
+}
+
+h3
+{
+    color: black;
+    font:  17px verdana, sans-serif; 
+    align: center;
+    font-weight: bold;
+}
+
+h4
+{
+    color: red;
+    font:  18px verdana, sans-serif; 
+    font-weight: bold;
+}
+
+h5
+{
+    color: red;
+    margin: auto;
+}
+
+h6
+{
+    color: green;
+    font:  15px verdana, sans-serif; 
+    align: center;
+}
+
+h7
+{
+    color: #FF851B;
+    font:  18px verdana, sans-serif; 
+    align: center;
+}
+
+/* canvas for image */
+#myCanvas
+{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+/* secondary definition for some contained elements*/
+#txt
+{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border:darkred solid 2px;
+    border-radius: 6px;
+    text-align: center; 
+}
+
+/* positioning for drop down itself*/
+#selectImg 
+{
+    background-color:lightblue;
+    border-radius: 5px;
+    color: brown;
+}
+
+/* To keep every form centered and in focus*/
+form
+{
+    border:darkred solid 2px; 
+    padding:20px;
+    margin:10px; 
+    background-color: white;
+    border-radius: 6px;
+}
+
+form:hover
+{
+    border:blue solid 2px; 
+    background-color: #E0FFFF;
+}
+
+/* Defines the table and formatting for it*/
+table, td 
+{
+    border-collapse: collapse; 
+    padding:5px; 
+    margin:5px; 
+    border: 2px solid darkgreen; 
+    font: bold 16px verdana, sans-serif;
+    color: brown;
+    background-color: white;
+}
+
+table, td:hover
+{
+    
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+/* tested if black outline would be better against blue background*/
+.hi
+{
+    outline-color: black;
+}
+
+/* adds rounded edges*/
+input
+{
+    border-radius: 3px;
+}
+
+/* adding background-color to some fields*/
+#test 
+{
+    background-color: yellow;;
+}
+
+#cyan
+{
+    background-color: cyan;;
+}
+
+/* Gets rid of border around some form inputs to make viewing names easier upon URL retrieval*/
+#help
+{
+    border: 0px;
+    background: transparent;
+}
+
+#help2
+{
+    border: 0px;
+    background: transparent;
+    align: center;
+}
+
+/* Various definitions for user input fields*/
+input[type=number]
+{
+    width: 75px;
+    border-radius: 3px;
+}
+
+input[type=submit] 
+{ 
+    font: 16px verdana, sans-serif;
+}
+
+input[type=submit]:hover
+{ 
+    cursor: pointer;
+}
+
+/* Allows for different column colors of table*/
+.oneCol
+{
+    color: red;
+}
+
+.twoCol
+{
+    color: blue;
+}
+
+.threeCol
+{
+    color: #800000;
+}
+
+.fourCol
+{
+    color: green;
+}
+
+.fiveCol
+{
+    color: brown;
+}
+
+.sixCol
+{
+    color: gold;
+}
+
+.sevenCol
+{
+    color: purple;
+}
+
+.eightCol
+{
+    color: teal;
+}
+
+.nineCol
+{
+    color: grey;
+}

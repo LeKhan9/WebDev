@@ -1,0 +1,167 @@
+body 
+{
+    text-align: center;
+    background-color: lightblue;
+}
+
+/* aligns banner text */
+p 
+{
+    margin:0 auto; 
+    text-align: left;
+    padding-top: 3px;
+    color: #800000 ;
+    font-size:18px;
+}
+
+p1
+{
+    color: #800000 ;
+    font-size:14px;
+}
+
+/* form inside of banner */
+.formy
+{
+    margin-left: 315px ; 
+    margin-top: -15px;
+    width:600px; 
+    height:20px; 
+}
+
+/* top most banner block */
+.banner
+{
+    margin:0 auto; 
+    width:948px; 
+    height:25px; 
+    padding-top:3px;
+    background:#FFE066; 
+    border:1px solid  #800000; 
+    border-radius: 9px; 
+}
+
+/* background for banner */
+.bannerBack
+{
+    
+    margin:0 auto; 
+    width:954px; 
+    height:32px; 
+    padding-top:2px;
+    line-height:12px; 
+    background:rgba(200,200,200,1); 
+    border:1px solid #800000;
+    border-radius: 9px; 
+}
+
+/* definitions for the button */
+.button 
+{
+    border: 1px solid white;
+    border-radius: 2px;
+    color: #FFCC00 ;
+    font:14px solid; 
+    background: olive; 
+    border-radius: 5px;
+}
+
+/* changes color for button on hover */
+.button:hover
+{
+    color: black ;
+    background-color: white;
+    border: 1px solid black;
+    
+}
+
+/* background for banner */
+.bottom
+{
+    text-align:left; 
+    margin: 0 auto; 
+    margin-top:2px; 
+    width:954px; 
+    height:160px; 
+    padding-top:1px; 
+    background:rgba(200,200,200,1);
+    border:1px solid #800000; 
+    border-radius: 9px;
+    display: table;
+
+}
+
+/* canvas for image */
+#myCanvas
+{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+/* canvas rests on this */
+.mapCan
+{
+    margin-top:-2px; 
+    width:954px; 
+    height:366px; 
+    display: block; 
+    background:#F5F5DC;
+    border:1px solid #800000; 
+    border-radius: 9px;
+}
+
+/* fitted div for table */
+.tableIt
+{
+    margin:0 auto; 
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width:945px; 
+    padding-top:3px;
+    border:1px solid  #800000; 
+    border-radius: 9px; 
+    display: table;
+}
+
+
+/* positioning for drop down itself*/
+#selectImg 
+{
+    background-color:lightblue;
+    border-radius: 5px;
+}
+
+/* positioning for drop down itself*/
+#selectImg:hover
+{
+    background-color:white;
+}
+
+/* all designs below format the table including color per column*/
+#table, th, td
+{
+    margin:0 auto; 
+    border: 1px solid green;
+    border-collapse: collapse;
+    width: 700px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.zip
+{
+    color: yellow;
+}
+
+.twoCol
+{
+    color: blue;
+}
+
+.threeCol
+{
+    color: #800000;
+}
+
+
+

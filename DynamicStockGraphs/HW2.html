@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+	<head>
+        <link rel="stylesheet" type= "text/css" href="my.css" />
+		<script src="js/Chart.js"></script>
+		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+        <title> Web Tech HW2: Stocks </title>
+        <author>  By Mohammad Khan for Web Tech </author>
+
+
+        <script type="text/javascript">
+            var readText;
+            
+            // these values will be the stock data for the Chart objects (line and bar)
+            var date= []; //holds all dates
+            var valueIBM1= [];
+            var valueIBM2= [];
+            var valueAMZN1= [];
+            var valueAMZN2= [];
+            var valueAAPL1= [];
+            var valueAAPL2= [];
+            
+            // This is where the information is parsed from the CSV file.
+            // One parse function for each stock. Could have made this into
+            // one function, but having modular seems more intuitive to me :)
+            function parseCSV1(data)
+            {
+                var rows = data.split("\n");
+                
+                // loop through all rows
+                for (var i = 0; i < rows.length; i++) 
+                {
+                    if (rows[i]) 
+                    {
+                        // we have 3 columns split by commas
+                        var column = rows[i].split(",");
+                        // append date to its corresponding array
+                        date.unshift(column[0]);
+                        // append the volumes to its corresponding array
+                        // parse to a Float as to not lose information
+                        valueIBM1.unshift(parseFloat(column[1])/1000000);
+                        // append the close to its corresponding array
+                        valueIBM2.unshift(parseFloat(column[2]));        
+                    }
+                }
+            }
+            
+            // opening and getting the information from CSV
+            function readTextFile1(fileName)
+            {
+                var inFile = new XMLHttpRequest();
+                inFile.open("GET", fileName, false);  
+                inFile.send();
+                readText = inFile.responseText;
+                parseCSV1(inFile.responseText);
+            }           
+            
+            function parseCSV2(data)
+            {
+                var rows = data.split("\n");
+                
+                for (var i = 0; i < rows.length; i++) 
+                {
+                    if (rows[i]) 
+                    {
+                        var column = rows[i].split(",");
+                        valueAMZN1.unshift(parseFloat(column[1])/1000000);
+                        valueAMZN2.unshift(parseFloat(column[2]));        
+                    }
+                }
+            }
+            
+            function readTextFile2(fileName)
+            {
+                var inFile = new XMLHttpRequest();
+                inFile.open("GET", fileName, false);  
+                inFile.send();
+                readText = inFile.responseText;
+                parseCSV2(inFile.responseText);
+            }           
+            
+            
+            function parseCSV3(data)
+            {
+                var rows = data.split("\n");
+                for (var i = 0; i < rows.length; i++) 
+                {
+                    if (rows[i]) 
+                    {
+                        var column = rows[i].split(",");
+                        valueAAPL1.unshift(parseFloat(column[1])/1000000);
+                        valueAAPL2.unshift(parseFloat(column[2]));        
+                    }
+                }
+            }
+            
+            function readTextFile3(fileName)
+            {
+                var inFile = new XMLHttpRequest();
+                inFile.open("GET", fileName, false);  
+                inFile.send();
+                readText = inFile.responseText;
+                parseCSV3(inFile.responseText);
+            }           
+        </script>
+        
+		<script language="javascript">
+		  var myGraph;
+          var myGraph2;
+  
+          // bar Chart data is filled in, initially with 
+          // just one stock value assigned to data
+		  var barChartData = 
+          {
+              // assigns dates
+			  labels : date,
+			  datasets : [
+				  {
+					  fillColor : "rgba(0,0,0,.1)",
+					  strokeColor : "rgba(0,0,0,1)",
+					  data : valueIBM1
+				  },
+                  {
+					  fillColor : "rgba(255,0,0,.1)",
+					  strokeColor : "rgba(255,0,0,1)",
+					  data : null
+				  },
+                  {
+					  fillColor : "rgba(0,255,100,.1)",
+					  strokeColor : "rgba(0,255,100,1)",
+					  data : null
+				  }
+			           ]
+		  }
+          
+          // same as above, but for line Chart
+           var lineChartData = 
+           {
+			  labels : date,
+			  datasets : [
+				  {
+					  fillColor : "rgba(0,0,0,.35)",
+					  strokeColor : "rgba(0,0,0,.25)",
+					  data : valueIBM2
+				  },
+                  {
+					  fillColor : "rgba(255,0,0,.35)",
+					  strokeColor : "rgba(255,0,0,.25)",
+					  data : null
+				  },
+                  {
+					  fillColor : "rgba(0,255,100,.35)",
+					  strokeColor : "rgba(0,255,100,.25)",
+					  data : null
+				  }
+                         ]
+		  }
+  		
+          // keeping counters will help with toggling
+          // if count changes parity, then we change
+          // if stock data is hidden or visible on graphs
+          var count1=0; // for IBM
+          var count2=0; // for AMZN
+          var count3=0; // for AAPL
+            
+          function record1()
+          {
+              count1 = count1+1;
+              drawChart();
+          }
+            function record2()
+          {
+              count2 = count2+1;
+              drawChart();
+          }
+            function record3()
+          {
+              count3 = count3+1;
+              drawChart();
+          }
+            
+          // Here is where the toggling actually happens,
+          // depending on the parity of the counters    
+          // null denotes that information will be hidden    
+          // Accessing object properties through dot operator 
+          // and changing them by assignment "="    
+		  function drawChart()
+          {
+            if(count1%2!=0)
+            {
+                lineChartData.datasets[0].data = valueIBM2; 
+                barChartData.datasets[0].data = valueIBM1;
+            }
+            else 
+            {
+                lineChartData.datasets[0].data = null; 
+                barChartData.datasets[0].data = null;
+            }
+              
+            if(count2%2!=0)
+            {
+                lineChartData.datasets[1].data = valueAMZN2; 
+                barChartData.datasets[1].data = valueAMZN1;
+            }
+            else 
+            {
+                lineChartData.datasets[1].data = null; 
+                barChartData.datasets[1].data = null;
+            }
+              
+            if(count3%2!=0)
+            {
+                lineChartData.datasets[2].data = valueAAPL2; 
+                barChartData.datasets[2].data = valueAAPL1;
+            }
+            else 
+            {
+                lineChartData.datasets[2].data = null; 
+                barChartData.datasets[2].data = null;
+            }
+            
+			myGraph = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+            myGraph2 = new Chart(document.getElementById("canvas2").getContext("2d")).Line(lineChartData);
+		  }	
+            
+        
+		</script>
+	</head>
+    
+	<body>
+        
+		<h1> -- STOCK GRAPH VIEW -- </h1>
+         <h2> Line: Price in Dollars</h2>
+         <h2> Bar: Trade Volume in Millions</h2>
+         <div>	
+			<canvas id="canvas2" height="380" width="1910"></canvas>
+			<canvas id="canvas" height="380" width="1910"></canvas>
+        </div>
+
+        <script type="text/javascript">
+            readTextFile1("IBM.csv");
+            readTextFile2("AMZN.csv");
+            readTextFile3("AAPL.csv");
+            record1(); // initially called to show IBM stock at start
+            alert(valueAAPL2);
+        </script>
+        
+		<div>
+			<button class="buttonChange2" onClick="record2()" ><img src="amzn.jpg"></img>AMZN</button>
+			<button class="buttonChange1" onClick="record1()"><img src="ibm.jpg"></img>IBM</button>
+			<button class="buttonChange3" onClick="record3()"> <img src="apple.jpg"></img>AAPL</button>
+		</div>
+	</body>
+</html>

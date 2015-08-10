@@ -1,0 +1,11 @@
+BODY_BACKGROUND rgb(200,205,180)
+CELL_BACKGROUND1 Salmon
+CELL_BACKGROUND2 Olive
+TABLE_BORDER_COLOR LightSteelBlue
+TABLE_BORDER_PX 9
+AUTHORS Khan & Snelling
+TITLE Nature
+IMAGES
+1.jpg  2.jpg 3.jpg
+4.jpg  5.jpg 6.jpg
+7.jpg  8.jpg 9.jpg

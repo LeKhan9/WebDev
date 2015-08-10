@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Image Processing</title>
+	<link rel="stylesheet" href="HW3.css">
+	<script src="rgb-hsv_converter.js"></script>
+</head>
+    
+<body>
+    
+	<script type="text/javascript">
+        
+        // We run this script first to get our image data and then we create 
+        // the framework such as the canvas and sliders, we then conclude with 
+        // methods that deal with changes to these elements.
+        
+        var x;  // for displaying file names
+        var y;  // for displaying titles - used later for image text
+        
+        // 3 data values for each filter to be pushed in later functions
+        var filter1 = [0,0,0]; 
+		var filter2 = [0,0,0];
+		var filter3 = [0,0,0];
+        
+        // this will populate the drop down list with file names
+		function request(){
+			my_xml=new XMLHttpRequest();
+            my_xml.onreadystatechange=function( ){
+                if (my_xml.readyState==4 && my_xml.status==200){
+                    xml_str=my_xml.responseXML; 
+                    
+                    // targets by these xml taggings
+                    x=xml_str.getElementsByTagName("fileName"); 
+                    y=xml_str.getElementsByTagName("title");
+                    var str ="";
+                    
+                    // adds to str to be input into drop down object
+                    for(i=0;i<x.length;i++)
+                    {
+                        str += "<option value=\""+  x[i].childNodes[0].nodeValue +"\">"+ x[i].childNodes[0].nodeValue+"</option> <br />";
+                    }
+                    
+                    // puts str into drop down object 'selectImg'
+                    document.getElementById("selectImg").innerHTML = str;  
+                }
+            }
+            my_xml.open("GET","images.xml",true);
+			my_xml.send( );
+		}
+        request();
+	</script>
+	
+	<div class="banner">
+			<p> COM 214 - Multiple Image Filters </p>
+    <div>
+            
+     <div class="bigFilterBlock">
+            
+			<div class="backDrop">
+                
+				<div class="sliderBlock">
+					<p class="filter">Filter 1</p>
+                    
+					<script>
+                        
+                    // establishes data retrieval based on check box and filter -- there is one write for each filter
+					document.write('<input name="filters" class="checkBox" type="checkbox" value="' + filter1 + '" />');
+                        
+					</script>
+         <input type="range" class="slider" min="0" max="360" value="36" step="1" onchange='filter1 = drawHands(can1,can2,imgd,this.value)' />
+				</div>
+                
+				<div class="wheelBlock">
+					<canvas id="scan1" width="180" height="180">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+                
+			</div>
+            
+			<div class="backDrop">
+                
+                <div class="sliderBlock">
+					<p class="filter">Filter 2</p>
+					<script>
+					document.write('<input name="filters" class="checkBox" type="checkbox" value="' + filter2 + '" />');
+					</script>
+         <input type="range" class="slider" min="0" max="360" value="36" step="1" onchange='filter2 = drawHands(can21,can22,imgd,this.value)' />
+				</div>
+                
+				<div class="wheelBlock">
+					<canvas id="scan2" width="180" height="180">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+                
+			</div>
+            
+			<div class="backDrop">
+                
+				<div class="sliderBlock">
+					<p class="filter">Filter 3</p>
+					<script>
+					document.write('<input name="filters" class="checkBox" type="checkbox" value="' + filter3 + '" />');
+					</script>
+            <input type="range" class="slider" min="0" max="360" value="36" step="1" onchange='filter3=drawHands(can31,can32,imgd,this.value)' />
+				</div>
+                
+				<div class="wheelBlock">
+					<canvas id="scan3" width="180" height="180">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+                
+			</div>
+            
+			<div class="backDrop2">
+                
+				<div class="sliderBlock">
+					<p class="filter">Filter Ranges</p>
+					<input type="range" class="slider" min="0" max="180" value="16" step="1" onchange='mapFilter(this.value)' />
+				</div>
+                
+                <br>
+                
+				<div class="dropBlock">
+					<p class="filter"><br><br>Images to Filter</p>
+					<select id="selectImg" onchange="swap();"></select>
+                    <br> 
+                   <button class="button" onClick="filterVal()">-- Filter --</button> 
+				</div>
+
+            </div>
+   </div>
+            
+		<div class="imageBlock">
+            
+			<div class="imageCanvas">
+				<div class="Absolute-Center">
+					<canvas id="firstPic" width="400" height="400">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+            
+			<div class="imageCanvas">
+				<div class="Absolute-Center">
+					<canvas id="secondPic" width="400" height="400">
+						Your browser does not support the canvas element.
+					</canvas>
+				</div>
+			</div>
+            
+		</div>
+	
+	<script type="text/javascript">				
+		 
+        // one canvas element for each filter, with two 2D contexts 
+        // for each to be used later on for writing and processing
+        
+        // for filter1
+		var canv=document.getElementById("scan1");
+        var	can1 = canv.getContext("2d");
+		var	can2 = canv.getContext("2d");
+        
+        // for filter2
+		var canv2=document.getElementById("scan2");
+        var can21=canv2.getContext("2d");
+		var can22=canv2.getContext("2d");
+        
+        // for filter3
+		var canv3=document.getElementById("scan3");
+		var can31=canv3.getContext("2d");
+		var can32=canv3.getContext("2d");
+        
+        // size of canvas of filters
+		var width=180; 
+		var height=180;
+		var imgd = can1.createImageData(width,height);
+        
+        // relative x-y placement of color spectra wheels on canvas
+		var xpos = 92;
+		var ypos = 76;
+        var handPos = 0;
+
+        // controls how big inner 'hole' of color wheels are 
+		var r = 32;
+        
+        
+        // runs through for each filter depending on color wheels
+        // and returns basic rgb pixelation for the image
+		function putCan(toPut, imgdata){
+            
+            // defining changes to positions of wheel objects
+            // these will change based on sweeping through 2PI
+			var angle=0;
+            var arcLen = 0;
+            var circum=0;
+            var xfit;
+            var yfit;
+			var i=0;
+            
+            // to retrieve rgba values
+			var jpix=0;
+            var px = imgdata.data;
+ 
+			for(r;r<60;r++){
+				for(var i=0;i<1000;i++){
+					angle = i*180/Math.PI;
+                    
+                    // parsing since used PI 
+					xfit = parseInt(xpos+r*Math.cos(angle));
+					yfit = parseInt(ypos+r*Math.sin(angle));
+                    
+                    //sweep length
+					arcLen = angle*r;
+					circum = 2*Math.PI*r;
+                    
+                    // utilizes hsv 
+					rgb = hsvToRgb(arcLen/circum, 1, 1);
+					jpix = (xfit+yfit*width)*4;
+                    
+                    // basic rgb pixelation for the image
+					px[jpix  ] = rgb[0];
+					px[jpix+1] = rgb[1];
+					px[jpix+2] = rgb[2];
+                    // set to max
+					px[jpix+3] = 255; 
+				}
+			}
+			toPut.putImageData(imgdata, 0, 0);
+		}
+        
+        // runs the above function for each 3
+		putCan(can1,imgd);	
+		putCan(can21,imgd);	
+		putCan(can31,imgd);	
+		
+        // works path on slider with hands of color wheel with circle properties
+		function drawHands(cn1, cn2, imgdata, currentSlide){
+            
+            // gets the value from the filter arrays
+			var slider = parseInt(currentSlide);
+			cn2.clearRect(0, 0, width, height);
+			cn1.putImageData(imgdata, 0, 0);
+			cn2.beginPath();
+			cn2.moveTo(xpos,ypos);
+            
+            // to determine bottom range using canvas and circle properties
+			var slider1 = slider*Math.PI/180;
+			var xHand = parseInt(xpos+r*Math.cos(slider1));
+			var yHand = parseInt(ypos+r*Math.sin(slider1));
+			cn2.lineTo(xHand,yHand);
+			cn2.stroke();
+			cn2.closePath();
+			cn2.beginPath();
+			cn2.moveTo(xpos,ypos);
+            
+            // full sweep to find second position
+			hand2 = (slider+handPos)%360;
+            
+            // to determine top range using canvas and circle properties 
+			var slider2 = (hand2)*Math.PI/180;
+			xHand2 = parseInt(xpos+r*Math.cos(slider2));
+			yHand2 = parseInt(ypos+r*Math.sin(slider2));
+			cn2.lineTo(xHand2,yHand2);
+			cn2.stroke();
+			cn2.closePath();
+			bottomCol = slider1/(2*Math.PI);
+			topCol = slider2/(2*Math.PI);
+            
+			return[bottomCol,topCol,slider];
+		}
+        
+        // calls for each filter - with corresponding canvas
+		drawHands(can1,can2,imgd,filter1[2]);
+		drawHands(can21,can22,imgd,filter2[2]);
+		drawHands(can31,can32,imgd,filter3[2]);
+
+        // takes the passed value and assigns each filter a canvas mapping
+		function mapFilter(range){
+			handPos = parseInt(range);
+			filter1 = drawHands(can1,can2,imgd,filter1[2]);
+			filter2 = drawHands(can21,can22,imgd,filter2[2]);
+			filter3 = drawHands(can31,can32,imgd,filter3[2]);
+		}
+					
+        // the picture to show when program launches
+		var currentPic = "Munch.jpg";
+        
+        // Gets the filter data from the image and throws it into the filter arrays
+		function filterVal(){
+            
+            // requests data from filters
+			var data = document.getElementsByName("filters");
+            
+            // data from above call is pushed into list with all 3 filters
+			var filtList = new Array();
+			if( data[0].checked )
+				filtList.push(filter1);
+			if( data[1].checked )
+				filtList.push(filter2);
+			if( data[2].checked )
+				filtList.push(filter3);
+            
+            // context for post filter
+			var canv=document.getElementById("secondPic");
+			var can1=canv.getContext("2d");
+            
+            // for putting font on image canvas
+			var can2=canv.getContext("2d");
+			can2.font = '15pt Verdana';
+			can1.clearRect(0, 0, canv.width, canv.height);
+            
+            // as long as we have data to consider this executes
+			if(filtList.length != 0){
+				var picSelect = document.getElementById("selectImg");
+                
+                // gets the current picture 
+				if(typeof(picSelect.options[picSelect.selectedIndex]) != 'undefined'){
+					currentPic = picSelect.options[picSelect.selectedIndex].value;
+				}
+                
+                // used to produce scaled image on cavas 
+				var img = new Image(); 
+				var w, h;
+				var factor;
+                
+				img.onload = function(){
+                    
+                    // finds the longer side
+					var side = Math.max(this.height, this.width);
+					var factor = 400/side;		//determine scaling factor based on the longest side
+					h = this.height * factor;	//scaling the image
+					w = this.width * factor;
+					
+                    // resize the canvas to the new image size
+                    canv.width = w;			
+					canv.height = h;
+					can1.drawImage(img, 0, 0, w, h );
+					var imgd  = can1.getImageData(0, 0, canv.width, canv.height);
+                    
+                    // px will be used to loop through by rgba
+					var px = imgd.data;
+                    
+                    // rgb--hsv computation 
+					var hsv;
+					var first, last;
+					var hold;
+					var counter=0;
+                    
+					for(var i=0;i< px.length;i+=4){
+						hsv = rgbToHsv(px[i],px[i+1],px[i+2])
+						for(var j=0;j<filtList.length;j++){
+							hold=filtList[j];
+							first = Math.min(hold[0],hold[1]);
+							last = Math.max(hold[0],hold[1]);
+							if(first<hsv[0] && hsv[0]<last){
+								counter+=1;
+							}
+						}
+                        
+                        if(counter<1){
+							px[i] = 0;
+							px[i+1] = 0;
+							px[i+2] = 0;
+						
+						}
+						counter=0;
+					}		
+					can1.putImageData(imgd,0,0);
+					can2.fillStyle = 'rgba(255,255,255,1)';
+                    
+                    //first parameter to get name of file using variable y from XML in first Javascript above
+					can2.fillText(y[(document.getElementById("selectImg").selectedIndex)].childNodes[0].nodeValue,10,10);
+				}
+				img.src = currentPic;
+			}
+			else{				
+				can1.fillRect(0, 0, canv.width, canv.height);
+				can2.fillStyle = 'rgba(255,255,255,1)';
+                
+                // presents users with directions and an incentive!
+				can2.fillText(" Click the Check Box(es), then ",45,35);
+                can2.fillText(" the Filter Button to Reveal",45,65);
+                can2.fillText(" the Title of the Image!",45,100);
+                can2.fillText(" This will also allow you",45,135);
+                can2.fillText(" to start filtering the image",45,170);
+                can2.fillText(" by moving the sliders and",45,205);
+                can2.fillText(" adjusting the filters on",45,240);
+                can2.fillText(" the color wheels",45,275);
+			}
+		}
+		
+        // function called as user chooses
+		function swap(){
+            // we call the filters every time we change the picture
+			filterVal();
+            // gets the picture that is chosen at the drop down 
+            // as long as there is an option
+			var picSelect = document.getElementById("selectImg");
+			if(typeof(picSelect.options[picSelect.selectedIndex]) != 'undefined'){
+				currentPic = picSelect.options[picSelect.selectedIndex].value;
+			}
+            
+            // canvas for first picture
+			var canv=document.getElementById("firstPic");
+          
+            var can1=canv.getContext("2d");
+            can1.clearRect(0, 0, canv.width, canv.height);
+            
+            // for layering text on picture
+			var can2=canv.getContext("2d");
+			can2.font = '15pt Verdana';
+			can2.fillStyle = 'rgba(152,186,151,1)';
+            
+            var img = new Image();  
+            var w, h;
+			var factor; 
+            
+            img.onload = function(){
+                // finding the max of the height and width
+				var side = Math.max(this.height, this.width);
+				var factor = 400/side;		//determine scaling factor based on the longest side
+                h = this.height * factor;	//scaling the image
+                w = this.width * factor;    
+				canv.width = w;			    // resize the canvas to the new image size
+				canv.height = h;
+                
+                can1.drawImage(img, 0, 0, w, h );
+				can2.fillStyle = 'rgba(255,255,255,1)';
+				can2.fillText("Mohammad Khan",10,10);
+            }
+			img.src = currentPic;
+        }
+        
+		mapFilter(16);
+        
+		swap();
+	</script>
+</body>
+
+</html>

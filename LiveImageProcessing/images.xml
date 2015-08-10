@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection>
+     <image>
+         <title>The Scream</title>
+         <artist>Edvard Munch</artist>
+         <year>1893</year>
+         <type>painting</type>
+         <fileName>Munch.jpg</fileName>
+     </image>
+     <image>
+         <title>Romantical Love</title>
+         <artist>Leonid Afremov</artist>
+         <year>1993</year>
+         <type>painting</type>
+         <fileName>Afremov.jpg</fileName>
+     </image>
+      <image>
+         <title>The Starry Night</title>
+         <artist>Vincent van Gogh</artist>
+         <year>1889</year>
+         <type>painting</type>
+         <fileName>VanGogh.jpg</fileName>
+     </image>
+     <image>
+         <title>Dream Scape</title>
+         <artist>Hong Leung</artist>
+         <year>2008</year>
+         <type>photo</type>
+         <fileName>Leung.jpg</fileName>
+     </image>
+     <image>
+         <title>Camaleon</title>
+         <artist>Tolo Duran</artist>
+         <year>2009</year>
+         <type>photo</type>
+         <fileName>Duran.jpg</fileName>
+     </image>
+	<image>
+         <title>Iconography</title>
+         <artist>Thomas Kinkade</artist>
+         <year>2009</year>
+         <type>photo</type>
+         <fileName>Kinkade.jpg</fileName>
+     </image>
+     <image>
+         <title>Outer Space</title>
+         <artist>Jaroslaw Grudzinski</artist>
+         <year>2010</year>
+         <type>painting</type>
+         <fileName>Grudzinski.jpg</fileName>
+     </image>
+    <image>
+         <title>Pokemon</title>
+         <artist>Ken Sugimori</artist>
+         <year>2012</year>
+         <type>painting</type>
+         <fileName>Sugimori.jpg</fileName>
+     </image>
+</collection>

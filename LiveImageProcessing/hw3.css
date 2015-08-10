@@ -1,0 +1,162 @@
+body 
+{
+    text-align: center;
+    background-color: lightblue;
+}
+
+p 
+{
+    text-align:center; 
+    margin-top:0px; 
+    color: white;
+    font-size:22px;
+}
+
+/* top most banner block */
+.banner
+{
+    margin:0 auto; 
+    width:951px; 
+    height:25px; 
+    padding-top:2px;
+    background:rgba(80,90,110,1); 
+    line-height:15px; 
+    border:2px solid rgba(0,0,0,1); 
+    border-radius: 9px; 
+}
+
+/* big block that holds 3 filters*/
+.bigFilterBlock
+{
+    margin: 0 auto; 
+    margin-top:10px; 
+    width:951px; 
+    height:240px; 
+    display: block; 
+    padding-top:1px; 
+    background:rgba(200,200,200,1);
+    border:5px solid rgba(140,186,151,1); 
+    border-radius: 9px;
+}
+
+/*for each filter there is a backdrop that matches its edge
+  border color*/
+.backDrop
+{
+    vertical-align:top; 
+    display: inline-block; 
+    margin:7px; 
+    width: 210px; 
+    height:209px; 
+    background:rgba(152,186,151,1); 
+    border:3px solid rgba(152,186,151,1); 
+    border-radius: 12px;
+}
+
+/* smaller backdrop for global slider*/
+.backDrop2
+{
+    vertical-align:top; 
+    display: inline-block; 
+    margin:7px; 
+    width: 210px; 
+    height:50px; 
+    background:rgba(152,186,151,1); 
+    border:3px solid rgba(152,186,151,1); 
+    border-radius: 12px;
+}
+
+/* block to hold each slider*/
+.sliderBlock
+{
+    margin:-2px; 
+    width:208px; 
+    height:50px; 
+    background:grey; 
+    border:3px solid rgba(152,186,151,1); 
+    border-radius: 15px;}
+
+/* block to hold each color wheel*/
+.wheelBlock
+{
+    margin:-1px; 
+    width:208px; 
+    height:150px; 
+    background:grey; 
+    border:3px solid rgba(152,186,151,1); 
+    border-radius: 15px;
+}
+
+/* block to hold drop down menu*/
+.dropBlock
+{
+    margin:-1px; 
+    width:208px; 
+    height:139px; 
+    background:grey; 
+    border:5px solid #900; 
+    border-radius: 15px;
+}
+
+/* block to hold image canvas */
+.imageBlock
+{
+    margin: 0 auto; 
+    display: block; 
+    padding-top:5px; 
+    width:900px; 
+    height:500px;
+} 
+
+/* canvas backdrop for each image*/
+.imageCanvas
+{
+    padding:8px; 
+    vertical-align:middle; 
+    display: inline-block; 
+    margin:5px; 
+    background:rgba(211,211,211,1); 
+    border:4px solid rgba(152,186,151,1); 
+    border-radius: 9px;
+}
+
+/* definitions for the button*/
+.button 
+{
+    border: 3px solid #900;
+    border-radius: 10px;
+    margin-top:10px; 
+    font:18px solid; 
+    background: rgba(152,186,151,1); 
+}
+
+/* positioning for sliders*/
+.slider 
+{
+    margin-top:-20px; 
+    width:140px;
+}
+
+/* positioning for each filter*/
+.filter 
+{
+    margin-top:5px; 
+    font-size:20px;
+    margin-bottom:10px; 
+
+}
+
+/* positioning for each checkbox */
+.checkBox 
+{
+    float:right; 
+    margin-top:-25px; 
+    margin-right:50px;
+}
+
+/* positioning for drop down itself*/
+#selectImg 
+{
+    background-color:lightblue;
+    margin-top:15px;
+}

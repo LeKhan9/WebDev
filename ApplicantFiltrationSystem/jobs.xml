@@ -1,0 +1,63 @@
+<CATALOG>
+
+<JOB>
+<TITLE>Software Engineer Intern</TITLE>
+<COMPANY>Oracle</COMPANY>
+<LOCATION>Santa Clara, CA</LOCATION>
+<PAY>$38/hour</PAY>
+<TERM>June 15th - August 17th</TERM>
+<POSIT> company position #1 </POSIT>
+<IMG> oracle.jpg </IMG>
+</JOB>
+
+<JOB>
+<TITLE>Web Development Intern</TITLE>
+<COMPANY>Oracle</COMPANY>
+<LOCATION>Santa Clara, CA</LOCATION>
+<PAY>$39/hour</PAY>
+<TERM>June 10th - August 17th</TERM>
+<POSIT> company position #2 </POSIT>
+<IMG> oracle.jpg </IMG>
+</JOB>
+
+<JOB>
+<TITLE>Software Engineer Intern</TITLE>
+<COMPANY>Google</COMPANY>
+<LOCATION>Mountain View, CA</LOCATION>
+<PAY>$52/hour</PAY>
+<TERM>June 5th - August 20th</TERM>
+<POSIT> company position #3 </POSIT>
+<IMG> google.jpg </IMG>
+</JOB>
+
+<JOB>
+<TITLE>Web Development Intern</TITLE>
+<COMPANY>Google</COMPANY>
+<LOCATION>Mountain View, CA</LOCATION>
+<PAY>$48/hour</PAY>
+<TERM>June 7th - August 23rd</TERM>
+<POSIT> company position #4 </POSIT>
+<IMG> google.jpg </IMG>
+</JOB>
+
+<JOB>
+<TITLE>Software Engineer Intern</TITLE>
+<COMPANY>Microsoft</COMPANY>
+<LOCATION>Redmond, WA</LOCATION>
+<PAY>$45/hour</PAY>
+<TERM>June 1st - August 20th</TERM>
+<POSIT> company position #5 </POSIT>
+<IMG> microsoft.jpg </IMG>
+</JOB>
+
+<JOB>
+<TITLE>Web Development Intern</TITLE>
+<COMPANY>Microsoft</COMPANY>
+<LOCATION>Redmond, WA</LOCATION>
+<PAY>$48/hour</PAY>
+<TERM>June 1st - August 25th</TERM>
+<POSIT> company position #6 </POSIT>
+<IMG> microsoft.jpg </IMG>
+</JOB>
+
+</CATALOG>

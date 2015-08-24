@@ -1,6 +1,6 @@
 # WebDev
 
-Various projects utilizing JavaScript, PHP, mySQL, HTML5, and CSS for Web Technologies/Mobile Computing class 
+Various projects utilizing JavaScript, PHP, mySQL, HTML5, CSS, and XML for Web Technologies/Mobile Computing class 
 
 - When testing, hosted on server such as xampp
 
